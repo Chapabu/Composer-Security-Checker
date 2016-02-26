@@ -1,0 +1,3 @@
+access composer security checker report:
+  title: 'Access Composer Security Report'
+  restrict access: true
