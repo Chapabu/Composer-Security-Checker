@@ -1,0 +1,6 @@
+composer_security_checker.report:
+  title: 'Composer Security Checker Report'
+  description: 'Get a security report containing any known vulnerabilities in Composer installed dependencies.'
+  route_name: composer_security_checker.security_checker_report_controller_index
+  parent: system.admin_reports
+  weight: -100
