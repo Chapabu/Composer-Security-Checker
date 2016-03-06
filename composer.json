@@ -9,6 +9,11 @@
       "homepage": "https://github.com/Chapabu"
     }
   ],
+  "autoload": {
+    "psr-4": {
+      "Drupal\\composer_security_checker\\": "src"
+    }
+  },
   "keywords": ["Drupal"],
   "license": "GPL-2.0+",
   "homepage": "https://www.drupal.org/project/composer_security_checker",
@@ -17,5 +22,8 @@
     "issues": "http://drupal.org/project/issues/composer_security_checker",
     "source": "http://cgit.drupalcode.org/composer_security_checker"
   },
-  "require": { }
+  "require": { },
+  "require-dev": {
+    "phpspec/phpspec": "~2.0"
+  }
 }
