@@ -14,7 +14,7 @@ use Drupal\composer_security_checker\Models\Advisory;
  *
  * @package Drupal\composer_security_checker\Collections
  */
-class AdvisoryCollection implements \Countable {
+class AdvisoryCollection implements \Countable, \IteratorAggregate {
 
   /**
    * An array of Advisories.
@@ -41,6 +41,13 @@ class AdvisoryCollection implements \Countable {
   }
 
   /**
+   * {@inheritdoc}
+   */
+  public function getIterator() {
+    return new \ArrayIterator($this->advisories);
+  }
+
+  /**
    * Get the current list of assigned advisories.
    *
    * @return array
@@ -48,6 +55,17 @@ class AdvisoryCollection implements \Countable {
    */
   public function getAdvisories() {
     return $this->advisories;
+  }
+
+  /**
+   * Ingest another collection into this one.
+   *
+   * @param \Drupal\composer_security_checker\Collections\AdvisoryCollection $collection
+   */
+  public function ingest(AdvisoryCollection $collection) {
+    foreach ($collection as $collection_item) {
+      $this->add($collection_item);
+    }
   }
 
 }
