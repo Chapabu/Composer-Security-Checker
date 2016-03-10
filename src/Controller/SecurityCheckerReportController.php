@@ -39,6 +39,7 @@ class SecurityCheckerReportController extends ControllerBase {
    *   Return Hello string.
    */
   public function index() {
+    $advisories = $this->composerSecurityRepository->getAvailableUpdates();
     return [
         '#type' => 'markup',
         '#markup' => $this->t('Implement method: index')

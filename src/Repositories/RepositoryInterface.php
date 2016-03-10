@@ -18,7 +18,8 @@ interface RepositoryInterface
   /**
    * Get a list of available updates for installed Composer packages.
    *
-   * @return array
+   * @return \Drupal\composer_security_checker\Collections\AdvisoryCollection
+   *   A collection of Advisories.
    */
   public function getAvailableUpdates();
 
