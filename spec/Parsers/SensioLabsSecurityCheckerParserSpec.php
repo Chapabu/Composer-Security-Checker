@@ -7,6 +7,22 @@ use Prophecy\Argument;
 class SensioLabsSecurityCheckerParserSpec extends ObjectBehavior
 {
 
+    private function getMonologStub()
+    {
+        return [
+            'monolog/monolog' => [
+                'version' => '1.11.0',
+                'advisories' => [
+                    'monolog/monolog/2014-12-29-1.yaml' => [
+                      'title' => 'Header injection in NativeMailerHandler',
+                      'link' => 'https://github.com/Seldaek/monolog/pull/448#issuecomment-68208704',
+                      'cve' => '',
+                    ],
+                ],
+            ],
+        ];
+    }
+
     function it_is_initializable()
     {
         $this->shouldHaveType('Drupal\composer_security_checker\Parsers\SensioLabsSecurityCheckerParser');
@@ -14,7 +30,7 @@ class SensioLabsSecurityCheckerParserSpec extends ObjectBehavior
 
     function let()
     {
-        $this->beConstructedWith($this->getMonologStub());
+        $this->beConstructedWith('monolog/monolog', $this->getMonologStub());
     }
 
     function it_should_return_a_collection()
