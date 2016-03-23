@@ -22,7 +22,9 @@
     "issues": "http://drupal.org/project/issues/composer_security_checker",
     "source": "http://cgit.drupalcode.org/composer_security_checker"
   },
-  "require": { },
+  "require": {
+    "sensiolabs/security-checker": "3.0.*"
+  },
   "require-dev": {
     "phpspec/phpspec": "~2.0"
   }
