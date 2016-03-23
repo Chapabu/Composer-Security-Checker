@@ -2,6 +2,6 @@ composer_security_checker.security_checker_report_controller_index:
   path: '/admin/reports/composer-security-report'
   defaults:
     _controller: '\Drupal\composer_security_checker\Controller\SecurityCheckerReportController::index'
-    _title: 'Security Checker Report Controller'
+    _title: 'Composer Security Checker Report'
   requirements:
     _permission: 'access composer security checker report'
