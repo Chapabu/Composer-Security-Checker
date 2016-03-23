@@ -19,16 +19,22 @@ use SensioLabs\Security\SecurityChecker;
 class SensioLabsSecurityCheckerRepository implements RepositoryInterface {
 
   /**
+   * Path to the Composer lock file.
+   *
    * @var string
    */
   protected $composerLockfilePath;
 
   /**
-   * @var \SensioLabs\Security\SecurityChecker
+   * SensioLabs security checker.
+   *
+   * @var SecurityChecker
    */
   private $checker;
 
   /**
+   * A collection of security advisories.
+   *
    * @var \Drupal\composer_security_checker\Collections\AdvisoryCollection
    */
   private $collection;
@@ -38,8 +44,8 @@ class SensioLabsSecurityCheckerRepository implements RepositoryInterface {
    *
    * @param string $composer_lockfile_path
    *   The path to the composer.lock file.
-   * @param \SensioLabs\Security\SecurityChecker $checker
-   *
+   * @param SecurityChecker $checker
+   *   A collection of security advisories.
    */
   public function __construct($composer_lockfile_path, SecurityChecker $checker) {
     $this->composerLockfilePath = $composer_lockfile_path;
@@ -47,6 +53,12 @@ class SensioLabsSecurityCheckerRepository implements RepositoryInterface {
     $this->collection = new AdvisoryCollection();
   }
 
+  /**
+   * Get the raw response from the SensioLabs Security Checker.
+   *
+   * @return array
+   *   An array of security vulnerabilities.
+   */
   private function getRawUpdates() {
     return $this->checker->check($this->composerLockfilePath);
   }

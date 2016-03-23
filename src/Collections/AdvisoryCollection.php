@@ -61,6 +61,7 @@ class AdvisoryCollection implements \Countable, \IteratorAggregate {
    * Ingest another collection into this one.
    *
    * @param \Drupal\composer_security_checker\Collections\AdvisoryCollection $collection
+   *   A collection item to be merged.
    */
   public function ingest(AdvisoryCollection $collection) {
     foreach ($collection as $collection_item) {

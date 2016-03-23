@@ -36,6 +36,8 @@ class SensioLabsSecurityCheckerParser {
   /**
    * SensioLabsSecurityCheckerParser constructor.
    *
+   * @param string $library_title
+   *   The title of the library that is being parsed.
    * @param array $security_advisories
    *   A single response item from a SensioLabs Security Checker response.
    */
@@ -45,6 +47,12 @@ class SensioLabsSecurityCheckerParser {
     $this->libraryTitle = $library_title;
   }
 
+  /**
+   * Parse the results of the security check.
+   *
+   * @return AdvisoryCollection
+   *   A collection object containing any potential security vulnerabilities.
+   */
   public function parse() {
 
     foreach ($this->securityAdvisories['advisories'] as $advisory_item_key => $advisory_item) {
@@ -65,11 +73,30 @@ class SensioLabsSecurityCheckerParser {
 
   }
 
+  /**
+   * Get the version of a library.
+   *
+   * @return string
+   *   The version number of a security advisory.
+   */
   private function parseVersion() {
     return $this->securityAdvisories['version'];
   }
 
-  private function parseIdentifier($advisory_item_key, $advisory_item) {
+  /**
+   * Get the identifier for a security vulnerability.
+   *
+   * This will generally either be a date or a CVE identifier.
+   *
+   * @param string $advisory_item_key
+   *   The default key (i.e. date) for a security advisory.
+   * @param array $advisory_item
+   *   A full security item containing any possible identifier keys.
+   *
+   * @return string
+   *   The identifier for a security vulnerability.
+   */
+  private function parseIdentifier($advisory_item_key, array $advisory_item) {
     if (!empty($advisory_item['cve'])) {
       return $advisory_item['cve'];
     }

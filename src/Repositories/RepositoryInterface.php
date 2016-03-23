@@ -12,8 +12,7 @@ namespace Drupal\composer_security_checker\Repositories;
  *
  * @package Drupal\composer_security_checker
  */
-interface RepositoryInterface
-{
+interface RepositoryInterface {
 
   /**
    * Get a list of available updates for installed Composer packages.
