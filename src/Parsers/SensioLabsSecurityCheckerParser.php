@@ -31,6 +31,11 @@ class SensioLabsSecurityCheckerParser {
    */
   private $collection;
 
+  /**
+   * The title of the library that is being parsed.
+   *
+   * @var string
+   */
   private $libraryTitle;
 
   /**
