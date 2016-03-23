@@ -10,14 +10,12 @@ class SensioLabsSecurityCheckerParserSpec extends ObjectBehavior
     private function getMonologStub()
     {
         return [
-            'monolog/monolog' => [
-                'version' => '1.11.0',
-                'advisories' => [
-                    'monolog/monolog/2014-12-29-1.yaml' => [
-                      'title' => 'Header injection in NativeMailerHandler',
-                      'link' => 'https://github.com/Seldaek/monolog/pull/448#issuecomment-68208704',
-                      'cve' => '',
-                    ],
+            'version' => '1.11.0',
+            'advisories' => [
+                'monolog/monolog/2014-12-29-1.yaml' => [
+                  'title' => 'Header injection in NativeMailerHandler',
+                  'link' => 'https://github.com/Seldaek/monolog/pull/448#issuecomment-68208704',
+                  'cve' => '',
                 ],
             ],
         ];
