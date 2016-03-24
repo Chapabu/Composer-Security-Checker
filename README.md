@@ -35,5 +35,17 @@ then you will need to do the following:
 These are just some things I'd like to get in at some point. There is no
 timescale for their implementation.
 
-* Cache the response based on the contents of the `composer.lock` file.
+* Cache the response based on the hashes in the `composer.lock` file.
 * Add e-mail notifications.
+* Add documentation for service switching.
+
+## Contribution
+
+As this module is pretty much solely API based, testing is tricky. Any patches
+submitted moving forward that don't have direct contact with the SensioLabs
+should contain PHPSpec specs. These specs do not follow Drupal Coding
+Standards, so if contributing, please ensure the standards as set out in the
+spec files is matched.
+
+To run the PHPSpec tests, run `composer install` in the module directory,
+and then run `./vendor/bin/phpspec run`.
