@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\composer_security_checker\RepositoryInterface\Repositories.
- */
-
 namespace Drupal\composer_security_checker\Repositories;
 
 /**

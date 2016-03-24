@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\composer_security_checker\Controller\SecurityCheckerReportController.
- */
-
 namespace Drupal\composer_security_checker\Controller;
 
 use Drupal\Component\Utility\UrlHelper;
