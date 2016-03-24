@@ -1,5 +1,5 @@
 <?php namespace spec\Drupal\composer_security_checker\Parsers;
-
+// @codingStandardsIgnoreFile
 use Drupal\composer_security_checker\Collections\AdvisoryCollection;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;

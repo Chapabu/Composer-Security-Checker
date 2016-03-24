@@ -1,5 +1,5 @@
 <?php namespace spec\Drupal\composer_security_checker\Collections;
-
+// @codingStandardsIgnoreFile
 use Drupal\composer_security_checker\Collections\AdvisoryCollection;
 use Drupal\composer_security_checker\Models\Advisory;
 use PhpSpec\ObjectBehavior;

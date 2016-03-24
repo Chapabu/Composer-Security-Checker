@@ -1,5 +1,5 @@
 <?php namespace spec\Drupal\composer_security_checker\Models;
-
+// @codingStandardsIgnoreFile
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
