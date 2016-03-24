@@ -146,11 +146,11 @@ class SecurityCheckerReportController extends ControllerBase {
    * Get an actual link to the security advisory.
    *
    * @param Advisory $advisory
-   *   A security advisory instance. We could just pass the link tetx in here,
+   *   A security advisory instance. We could just pass the link text in here,
    *   but I'd rather be able to typehint it.
    *
    * @return \Drupal\Core\GeneratedLink
-   *   A safe and generated link.
+   *   A sanitized <a> tag linking to the security notice.
    */
   private function getAdvisoryLinkMarkup(Advisory $advisory) {
 
