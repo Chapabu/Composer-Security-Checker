@@ -28,7 +28,6 @@ class AdvisoryCollectionSpec extends ObjectBehavior {
   }
 
   function it_should_be_able_to_ingest_other_collections() {
-
     $advisoryOne = new Advisory('foo', 'foo', 'foo', 'foo', 'foo');
     $advisoryTwo = new Advisory('bar', 'bar', 'bar', 'bar', 'bar');
 
@@ -44,6 +43,6 @@ class AdvisoryCollectionSpec extends ObjectBehavior {
     $this->ingest($collectionTwo);
 
     $this->getAdvisories()->shouldHaveCount(4);
-
   }
+
 }

@@ -36,4 +36,5 @@ class SensioLabsSecurityCheckerParserSpec extends ObjectBehavior {
   function it_should_return_a_collection() {
     $this->parse()->shouldReturnAnInstanceOf(AdvisoryCollection::class);
   }
+
 }

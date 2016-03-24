@@ -6,19 +6,13 @@ use Prophecy\Argument;
 class AdvisorySpec extends ObjectBehavior {
 
   function let() {
-
     $library_name = 'monolog/monolog';
-
     $library_version = '1.11.0';
-
     $advisory_date_or_cve = '2014-12-29';
-
     $advisory_title = 'Header injection in NativeMailerHandler';
-
     $advisory_link = 'https://github.com/Seldaek/monolog/pull/448#issuecomment-68208704';
 
     $this->beConstructedWith($library_name, $library_version, $advisory_date_or_cve, $advisory_title, $advisory_link);
-
   }
 
   function it_is_initializable() {
@@ -46,4 +40,5 @@ class AdvisorySpec extends ObjectBehavior {
     $this->getAdvisoryTitle()
       ->shouldReturn('Header injection in NativeMailerHandler');
   }
+
 }
