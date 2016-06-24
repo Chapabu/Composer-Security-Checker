@@ -4,11 +4,12 @@
  * @file
  * Handles checking of security updates for Composer managed packages.
  */
+use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 
 /**
  * Implements hook_theme().
  */
-function composer_security_checker_theme($existing, $type, $theme, $path) {
+function composer_security_checker_theme() {
 
   return [
     'composer_package_security_status_report' => [
@@ -17,5 +18,37 @@ function composer_security_checker_theme($existing, $type, $theme, $path) {
       ],
     ],
   ];
+
+}
+
+/**
+ * Implements hook_requirements().
+ */
+function composer_security_checker_requirements($phase) {
+
+  $requirements = [];
+
+  if ($phase === 'runtime') {
+
+    $requirements['composer_security_checker'] = [
+      'title' => t('Composer Security Checker'),
+      'description' => t('Composer Security Checker service available.'),
+      'severity' => REQUIREMENT_OK,
+    ];
+
+    try {
+      $service = \Drupal::service('composer_security_checker.sensiolabs_security_checker');
+    }
+    catch (ServiceNotFoundException $e) {
+      $requirements['composer_security_checker'] = [
+        'title' => t('Composer Security Checker'),
+        'description' => t('Composer Security Checker unavailable or not loaded.'),
+        'severity' => REQUIREMENT_ERROR,
+      ];
+    }
+
+  }
+
+  return $requirements;
 
 }
