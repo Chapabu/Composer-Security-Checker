@@ -19,6 +19,7 @@ addons:
 before_install:
   # Update Composer
   - composer self-update
+  - composer global require phpspec/phpspec 2.*
 
 install:
   # Setup fake mailserver - Thanks to http://dropbucket.org/node/1761
@@ -34,7 +35,6 @@ install:
   - drush dl drupal-8.1.x --drupal-project-rename=drupal
   - cd drupal/modules
   - ln -s ${TRAVIS_BUILD_DIR} composer_security_checker
-  - drush en composer_security_checker
   - cd ..
   - composer require sensiolabs/security-checker ~3.0.0
   # Start a web server using Drush.
@@ -44,3 +44,7 @@ install:
 script:
   - cd core
   - phpunit ../modules/
+  - cd ${TRAVIS_BUILD_DIR}
+  - composer dump-autoload
+  - phpspec run
+
