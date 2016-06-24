@@ -19,6 +19,7 @@ addons:
 before_install:
   # Update Composer
   - composer self-update
+  - composer global require hirak/prestissimo ^0.3
   - composer global require phpspec/phpspec 2.*
 
 install:
@@ -38,13 +39,14 @@ install:
   - cd ..
   - composer require sensiolabs/security-checker ~3.0.0
   # Start a web server using Drush.
-  - drush runserver 127.0.0.1:8080 &
+  - php -S localhost:8080 &
   - until netstat -an 2>/dev/null | grep '8080.*LISTEN'; do true; done
 
 script:
-  - cd core
-  - phpunit ../modules/
   - cd ${TRAVIS_BUILD_DIR}
   - composer dump-autoload
   - phpspec run
+  - cd ../../drupal/core
+  - phpunit ../modules/
+
 
