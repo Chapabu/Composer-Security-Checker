@@ -10,6 +10,7 @@ env:
     - PATH="$PATH:$HOME/.composer/vendor/bin"
     - SIMPLETEST_BASE_URL="http://localhost:8080"
     - SIMPLETEST_DB="sqlite://localhost/sites/default/files/.ht.sqlite"
+    - PHPCS_EXTENSIONS="php,module,inc,install,test,profile,theme,js,css,info,txt,md"
 
 addons:
   apt:
@@ -17,12 +18,13 @@ addons:
     - postfix
 
 before_install:
-  # Update Composer
-  - composer self-update
   - composer global require hirak/prestissimo ^0.3
   - composer global require phpspec/phpspec 2.*
+  - composer global require drupal/coder
+  - phpcs --config-set installed_paths ~/.composer/vendor/drupal/coder/coder_sniffer
 
 install:
+  - composer dump-autoload
   # Setup fake mailserver - Thanks to http://dropbucket.org/node/1761
   - sudo service postfix stop
   - smtp-sink -d "%d.%H.%M.%S" localhost:2500 1000 &
@@ -39,12 +41,12 @@ install:
   - cd ..
   - composer require sensiolabs/security-checker ~3.0.0
   # Start a web server using Drush.
-  - php -S localhost:8080 &
+  - nohup php -S localhost:8080 > /dev/null 2>&1 &
   - until netstat -an 2>/dev/null | grep '8080.*LISTEN'; do true; done
 
 script:
   - cd ${TRAVIS_BUILD_DIR}
-  - composer dump-autoload
+  - phpcs --standard=Drupal --extensions=${PHPCS_EXTENSIONS} --ignore=vendor,spec .
+  - phpcs --standard=DrupalPractice --extensions=${PHPCS_EXTENSIONS} --ignore=vendor,spec .
   - phpspec run
-  - cd ../../drupal/core
-  - ../vendor/bin/phpunit ../modules/
+  - cd ../../drupal/core && ../vendor/bin/phpunit ../modules/

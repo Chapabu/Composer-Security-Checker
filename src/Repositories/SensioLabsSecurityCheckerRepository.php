@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\composer_security_checker\Repositories\SensioLabsSecurityCheckerRepository.
- */
-
 namespace Drupal\composer_security_checker\Repositories;
 
 use Drupal\composer_security_checker\Collections\AdvisoryCollection;

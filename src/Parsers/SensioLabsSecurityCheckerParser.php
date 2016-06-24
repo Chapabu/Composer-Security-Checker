@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains ...Parsers\SensioLabsSecurityCheckerParser.
- */
-
 namespace Drupal\composer_security_checker\Parsers;
 
 use Drupal\composer_security_checker\Collections\AdvisoryCollection;
