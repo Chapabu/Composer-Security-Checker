@@ -1,0 +1,35 @@
+language: php
+
+php:
+  - 5.5
+  - 5.6
+  - 7.0
+
+env:
+  - PATH="$PATH:$HOME/.composer/vendor/bin"
+  - SIMPLETEST_BASE_URL="http://localhost:8080"
+  - SIMPLETEST_DB="sqlite://localhost/sites/default/files/.ht.sqlite"
+
+addons:
+  apt:
+    packages:
+    - postfix
+
+before_install:
+  # Update Composer
+  - composer self-update
+
+install:
+  # Setup fake mailserver - Thanks to http://dropbucket.org/node/1761
+  - sudo service postfix stop
+  - smtp-sink -d "%d.%H.%M.%S" localhost:2500 1000 &
+  - echo -e '#!/usr/bin/env bash\nexit 0' | sudo tee /usr/sbin/sendmail
+  - echo 'sendmail_path = "/usr/sbin/sendmail -t -i "' | sudo tee "/home/travis/.phpenv/versions/`php -i | grep "PHP Version" | head -n 1 | grep -o -P '\d+\.\d+\.\d+.*'`/etc/conf.d/sendmail.ini"
+  # Install Drupal Console
+  - curl https://drupalconsole.com/installer -L -o drupal.phar
+  - mv drupal.phar /usr/local/bin/drupal
+  - chmod +x /usr/local/bin/drupal
+  - drupal init --override
+  # Get Drupal
+  
+
