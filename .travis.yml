@@ -46,7 +46,5 @@ script:
   - cd ${TRAVIS_BUILD_DIR}
   - composer dump-autoload
   - phpspec run
-  - cd ../../drupal/core
-  - phpunit ../modules/
-
-
+  - cd ../../drupal
+  - vendor/bin/phpunit ../modules/
