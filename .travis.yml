@@ -10,7 +10,7 @@ env:
     - PATH="$PATH:$HOME/.composer/vendor/bin"
     - SIMPLETEST_BASE_URL="http://localhost:8080"
     - SIMPLETEST_DB="sqlite://localhost/sites/default/files/.ht.sqlite"
-    - PHPCS_EXTENSIONS="php,module,inc,install,test,profile,theme,js,css,info,txt,md"
+    - PHPCS_EXTENSIONS="php,module,inc,install,info"
 
 addons:
   apt:

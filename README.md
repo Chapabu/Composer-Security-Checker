@@ -3,7 +3,7 @@
 ## Introduction
 
 The Composer Security Manager module will check any installed Composer packages
-against using the [SensioLabs Security Checker](https://security.sensiolabs.org/)
+against the [SensioLabs Security Checker](https://security.sensiolabs.org/)
 service, and output a report similar to the core Update Manager report.
 
 ## Installation
