@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\composer_security_checker\Models\Update.
- */
-
 namespace Drupal\composer_security_checker\Models;
 
 /**
