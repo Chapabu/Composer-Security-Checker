@@ -6,29 +6,34 @@ The Composer Security Manager module will check any installed Composer packages
 against the [SensioLabs Security Checker](https://security.sensiolabs.org/)
 service, and output a report similar to the core Update Manager report.
 
-## Installation
+When installed using the recommended methods below, it will also install the
+[Roave Security Advisories](https://github.com/Roave/SecurityAdvisories) package
+to prevent installation of any Composer packages with known vulnerabilities.
 
-### With Composer Manager
+## Installation (recommended)
 
-The Composer Security Checker module ships with a `composer.json` file.
-Provided Composer Manager has been configured correctly, when you enable
-Composer Security Checker, it _should_ just work.
+Note: These instructions are for Drupal 8.1.*. For Drupal 8.0.*, please follow
+instructions presented by the Composer Manager module.
 
-### Without Composer Manager
+1. Follow instructions from https://www.drupal.org/node/2404989 to set your
+your site up for Composer managed modules.
 
-Due to the nature of Drupal 8, it's not necessarily required to have Composer
-Manager installed to benefit from Composer.
+2. Run the following command:
 
-If you are not using Composer Manager, but you are using Composer packages,
-then you will need to do the following:
-
-1. Add the following to the `composer.json` file found in your Drupal root.
-
-``` language-json
-"sensiolabs/security-checker": "3.0.*",
+```
+$ composer require drupal/composer_security_manager
 ```
 
-2. Run `composer install`
+## Installation (Drush/Drupal Console)
+
+1. Install the module using whichever method you prefer.
+
+2. In your Drupal root, run the following commands:
+
+```
+$ composer require sensiolabs/security-checker ~3.0.0
+$ composer require roave/security-advisories dev-master
+```
 
 ## Roadmap
 
@@ -49,3 +54,6 @@ spec files is matched.
 
 To run the PHPSpec tests, run `composer install` in the module directory,
 and then run `./vendor/bin/phpspec run`.
+
+Any other functionality should have Unit, Kernel, or Functional tests where
+appropriate.
