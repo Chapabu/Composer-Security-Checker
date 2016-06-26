@@ -10,7 +10,9 @@ When installed using the recommended methods below, it will also install the
 [Roave Security Advisories](https://github.com/Roave/SecurityAdvisories) package
 to prevent installation of any Composer packages with known vulnerabilities.
 
-## Installation (recommended)
+## Installation
+
+### Via Composer (recommended)
 
 Note: These instructions are for Drupal 8.1.*. For Drupal 8.0.*, please follow
 instructions presented by the Composer Manager module.
@@ -24,7 +26,7 @@ your site up for Composer managed modules.
 $ composer require drupal/composer_security_manager
 ```
 
-## Installation (Drush/Drupal Console)
+### Manually or via Drush/Drupal Console
 
 1. Install the module using whichever method you prefer.
 
@@ -34,6 +36,16 @@ $ composer require drupal/composer_security_manager
 $ composer require sensiolabs/security-checker ~3.0.0
 $ composer require roave/security-advisories dev-master
 ```
+
+## Troubleshooting
+
+### I've installed everything, but I get a 500 error on the report page
+
+This is normally due to APC caching of the Service Container. Usually,
+restarting PHP and/or Apache should fix this.
+
+You can also add `$settings['class_loader_auto_detect'] = FALSE;` in your
+`local.settings.php` file, as per [here](http://data.agaric.com/what-do-when-developing-drupal-8-module-and-class-file-just-isnt-being-autoloaded-even-though-it-def)
 
 ## Roadmap
 
