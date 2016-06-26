@@ -23,7 +23,8 @@
     "source": "http://cgit.drupalcode.org/composer_security_checker"
   },
   "require": {
-    "sensiolabs/security-checker": "3.0.*"
+    "sensiolabs/security-checker": "3.0.*",
+    "roave/security-advisories": "dev-master"
   },
   "require-dev": {
     "phpspec/phpspec": "~2.0"
