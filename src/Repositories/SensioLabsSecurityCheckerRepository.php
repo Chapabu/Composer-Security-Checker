@@ -4,6 +4,7 @@ namespace Drupal\composer_security_checker\Repositories;
 
 use Drupal\composer_security_checker\Collections\AdvisoryCollection;
 use Drupal\composer_security_checker\Parsers\SensioLabsSecurityCheckerParser;
+use Drupal\Core\Config\ConfigFactoryInterface;
 use SensioLabs\Security\SecurityChecker;
 
 /**
@@ -37,13 +38,13 @@ class SensioLabsSecurityCheckerRepository implements RepositoryInterface {
   /**
    * SensioLabsSecurityCheckerRepository constructor.
    *
-   * @param string $composer_lockfile_path
-   *   The path to the composer.lock file.
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   *   The config factory.
    * @param SecurityChecker $checker
    *   A collection of security advisories.
    */
-  public function __construct($composer_lockfile_path, SecurityChecker $checker) {
-    $this->composerLockfilePath = $composer_lockfile_path;
+  public function __construct(ConfigFactoryInterface $config_factory, SecurityChecker $checker) {
+    $this->composerLockfilePath = $config_factory->get('composer_security_checker.settings')->get('composer_lock_file_path');
     $this->checker = $checker;
     $this->collection = new AdvisoryCollection();
   }

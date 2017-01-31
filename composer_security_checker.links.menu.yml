@@ -4,3 +4,9 @@ composer_security_checker.report:
   route_name: composer_security_checker.security_checker_report_controller_index
   parent: system.admin_reports
   weight: -100
+composer_security_checker.composer_security_checker_settings_form:
+  title: 'Composer Security Checker Settings'
+  route_name: composer_security_checker.composer_security_checker_settings_form
+  description: 'Configure settings for Composer Security Checker.'
+  parent: system.admin_config_system
+  weight: 99

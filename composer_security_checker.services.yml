@@ -3,4 +3,4 @@ services:
     class: SensioLabs\Security\SecurityChecker
   composer_security_checker.security_checker_repository:
     class: Drupal\composer_security_checker\Repositories\SensioLabsSecurityCheckerRepository
-    arguments: ['@app.root', '@composer_security_checker.sensiolabs_security_checker']
+    arguments: ['@config.factory', '@composer_security_checker.sensiolabs_security_checker']
