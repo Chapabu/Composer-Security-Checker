@@ -8,6 +8,8 @@ use Drupal\Tests\BrowserTestBase;
  * Class Requirements.
  *
  * @package Drupal\Tests\composer_security_checker\Functional
+ *
+ * @group composer_security_checker
  */
 class Requirements extends BrowserTestBase {
 
